@@ -6,6 +6,7 @@ export const ColumnWrapper = styled.div<{ mine?: boolean }>`
   flex-direction: column;
   justify-content: space-around;
   border: 5px solid transparent;
+  transition: 0.3s;
   border-radius: 8px;
   ${({ mine }) =>
     mine &&

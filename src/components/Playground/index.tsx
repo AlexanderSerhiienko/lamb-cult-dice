@@ -9,18 +9,18 @@ export const Playground: FC = () => {
 
   return (
     <PlaygroundWrapper>
-      <div>My score: {myScore}</div>
-      <div>Rival score: {rivalScore}</div>
       <Board
         handleMakeMove={handleMakeMove}
         columns={rivalColumns}
         move={move}
+        score={rivalScore}
       />
       <Board
         handleMakeMove={handleMakeMove}
         mine
         columns={myColumns}
         move={move}
+        score={myScore}
       />
     </PlaygroundWrapper>
   )
