@@ -1,6 +1,4 @@
-export type ColumnType = number[];
-
-export type ColumnsFieldType = ColumnType[];
+export type ColumnsFieldType = number[][];
 
 export type HandleMakeMoveType = (mine: boolean, columnNumber: number) => void;
 

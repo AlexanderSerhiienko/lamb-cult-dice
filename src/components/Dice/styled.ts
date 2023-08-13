@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from "styled-components";
 
 const getDiceStyle = (quantity: number) => {
   switch (quantity) {
@@ -6,14 +6,14 @@ const getDiceStyle = (quantity: number) => {
       return `
             align-items: center;
             justify-content: center;
-            `
+            `;
     case 2:
       return `
             justify-content: space-between;
             div:last-child {
                 align-self: flex-end;
             }
-            `
+            `;
     case 3:
       return `
             column-gap: 0;
@@ -24,13 +24,13 @@ const getDiceStyle = (quantity: number) => {
            div:last-child {
                 align-self: flex-end;
             }
-            `
+            `;
     case 4:
       return `
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
-            `
+            `;
     case 5:
       return `
             flex-wrap: wrap;
@@ -42,18 +42,21 @@ const getDiceStyle = (quantity: number) => {
                 top: 50%;
                 transform: translate(-50%, -50%);
             }
-            `
+            `;
     case 6:
       return `
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
             row-gap: 6px;
-            `
+            `;
   }
-}
+};
 
-export const DiceWrapper = styled.div<{ quantity: number }>`
+export const DiceWrapper = styled.div<{
+  quantity: number;
+  highlighted?: boolean;
+}>`
   background: white;
   border: 2px solid black;
   height: 75px;
@@ -65,7 +68,12 @@ export const DiceWrapper = styled.div<{ quantity: number }>`
   border-radius: 16px;
   aspect-ratio: 1/1;
   ${({ quantity }) => getDiceStyle(quantity)}
-`
+  ${({ highlighted }) =>
+    highlighted &&
+    css`
+      background: cyan;
+    `}
+`;
 
 export const Dot = styled.div`
   width: 10px;
@@ -73,4 +81,4 @@ export const Dot = styled.div`
   border-radius: 50%;
   background: black;
   aspect-ratio: 1/1;
-`
+`;

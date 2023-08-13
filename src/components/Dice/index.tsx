@@ -1,16 +1,17 @@
-import { FC } from 'react'
-import { DiceWrapper, Dot } from './styled'
+import { FC } from "react";
+import { DiceWrapper, Dot } from "./styled";
 
 interface DiceProps {
-  quantity: number
+  quantity: number;
+  highlighted?: boolean;
 }
 
-export const Dice: FC<DiceProps> = ({ quantity }) => {
+export const Dice: FC<DiceProps> = ({ quantity, highlighted }) => {
   return (
-    <DiceWrapper quantity={quantity}>
+    <DiceWrapper highlighted={highlighted} quantity={quantity}>
       {[...Array(quantity)].map((_, i) => (
         <Dot key={i} />
       ))}
     </DiceWrapper>
-  )
-}
+  );
+};

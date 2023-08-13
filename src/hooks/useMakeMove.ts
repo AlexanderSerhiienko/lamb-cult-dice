@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   ColumnsFieldType,
-  ColumnType,
   generateRandomDice,
   MakeMoveReturnType,
 } from "../utils";
@@ -14,7 +13,7 @@ const emptyCells = [
 
 // if it is our turn, we put dice on the top of the column
 // while on opponent board, it should be bottom of the column
-const getEmptyIndexOfColumn = (column: ColumnType, isMyTurn?: boolean) =>
+const getEmptyIndexOfColumn = (column: number[], isMyTurn?: boolean) =>
   isMyTurn
     ? column.findIndex((cell) => !cell)
     : // @ts-ignore
@@ -34,22 +33,42 @@ export const useMakeMove = (): MakeMoveReturnType => {
     const columns = state[0];
 
     return columns.reduce((acc, column) => {
-      // multiplyBy is used to multiply the score if there are duplicates of dices
       let multiplyBy = 1;
+      let multiplyDice = 0;
+
       const numbersSet = new Set();
-      const columnSum = column.reduce((partialSum, cell) => {
+
+      let columnSum = column.reduce((partialSum, cell) => {
         if (!cell) return partialSum;
-        if (numbersSet.has(cell)) multiplyBy++;
-        else numbersSet.add(cell);
+
+        if (numbersSet.has(cell)) {
+          multiplyBy++;
+          multiplyDice = cell;
+        } else numbersSet.add(cell);
+
         return partialSum + cell;
       }, 0);
-      return columnSum * multiplyBy + acc;
+
+      // if we have 2 or more same dice, we remove them from previous calculation
+      // we should sum then and then multiply by 2
+      if (multiplyDice) {
+        columnSum -= multiplyDice * multiplyBy;
+        columnSum += multiplyDice * multiplyBy * 2;
+      }
+
+      return columnSum + acc;
     }, 0);
   };
 
-  const myScore = getScore(true);
-  const rivalScore = getScore(false);
+  const myScore = useMemo(
+    () => getScore(true),
+    [myColumnsState[0], rivalColumnsState[0]]
+  );
 
+  const rivalScore = useMemo(
+    () => getScore(false),
+    [myColumnsState[0], rivalColumnsState[0]]
+  );
   const handleMakeMove = (isMyTurn: boolean, columnNumber: number) => {
     // don't want to allow to make move if it's not our turn
     if (move.isMyTurn !== !!isMyTurn) return;
