@@ -1,9 +1,5 @@
 import { useMemo, useState } from "react";
-import {
-  ColumnsFieldType,
-  generateRandomDice,
-  MakeMoveReturnType,
-} from "../utils";
+import { generateRandomDice, MakeMoveReturnType } from "../utils";
 
 const emptyCells = [
   [0, 0, 0],
@@ -20,8 +16,8 @@ const getEmptyIndexOfColumn = (column: number[], isMyTurn?: boolean) =>
       column.findLastIndex((cell) => !cell);
 
 export const useMakeMove = (): MakeMoveReturnType => {
-  const myColumnsState = useState<ColumnsFieldType>(emptyCells);
-  const rivalColumnsState = useState<ColumnsFieldType>(emptyCells);
+  const myColumnsState = useState(emptyCells);
+  const rivalColumnsState = useState(emptyCells);
 
   const [move, setMove] = useState({
     isMyTurn: Math.random() < 0.5,
@@ -69,6 +65,7 @@ export const useMakeMove = (): MakeMoveReturnType => {
     () => getScore(false),
     [myColumnsState[0], rivalColumnsState[0]]
   );
+
   const handleMakeMove = (isMyTurn: boolean, columnNumber: number) => {
     // don't want to allow to make move if it's not our turn
     if (move.isMyTurn !== !!isMyTurn) return;

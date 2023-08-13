@@ -25,9 +25,9 @@ export const Column: FC<ColumnProps> = ({
   numberOfColumn,
   handleMakeMove,
 }) => {
-  
   const mostCommon = useMemo(() => getMostCommon([...column]), [column]);
 
+  // it checks if we have ore then one dice with the same value to highlight it
   const shouldHighlightMostCommon = useMemo(
     () => column.filter((v) => v === mostCommon).length > 1,
     [mostCommon]

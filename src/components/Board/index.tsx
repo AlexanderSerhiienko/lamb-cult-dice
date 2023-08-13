@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ColumnsFieldType, HandleMakeMoveType, MoveProps } from "../../utils";
+import { HandleMakeMoveType, MoveProps } from "../../utils";
 import { Column } from "../Column";
 import { Dice } from "../Dice";
 import {
@@ -12,7 +12,7 @@ import {
 
 interface BoardProps {
   mine?: boolean;
-  columns?: ColumnsFieldType;
+  columns?: number[][];
   handleMakeMove: HandleMakeMoveType;
   move: MoveProps;
   score: number;

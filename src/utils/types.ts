@@ -1,5 +1,3 @@
-export type ColumnsFieldType = number[][];
-
 export type HandleMakeMoveType = (mine: boolean, columnNumber: number) => void;
 
 export interface MoveProps {
@@ -9,8 +7,8 @@ export interface MoveProps {
 
 export type MakeMoveReturnType = [
   HandleMakeMoveType,
-  ColumnsFieldType,
-  ColumnsFieldType,
+  number[][],
+  number[][],
   number,
   number,
   MoveProps
