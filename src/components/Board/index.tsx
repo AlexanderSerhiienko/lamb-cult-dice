@@ -1,21 +1,21 @@
-import { FC } from 'react'
-import { ColumnsFieldType, HandleMakeMoveType, MoveProps } from '../../utils'
-import { Column } from '../Column'
-import { Dice } from '../Dice'
+import { FC } from "react";
+import { ColumnsFieldType, HandleMakeMoveType, MoveProps } from "../../utils";
+import { Column } from "../Column";
+import { Dice } from "../Dice";
 import {
   BoardWrapper,
   ColumnsFieldWrapper,
   PlayerInfoWrapper,
   Score,
   ThrownDiceWrapper,
-} from './styled'
+} from "./styled";
 
 interface BoardProps {
-  mine?: boolean
-  columns?: ColumnsFieldType
-  handleMakeMove?: HandleMakeMoveType
-  move: MoveProps
-  score: number
+  mine?: boolean;
+  columns?: ColumnsFieldType;
+  handleMakeMove: HandleMakeMoveType;
+  move: MoveProps;
+  score: number;
 }
 
 export const Board: FC<BoardProps> = ({
@@ -29,7 +29,7 @@ export const Board: FC<BoardProps> = ({
     <BoardWrapper>
       <PlayerInfoWrapper mine={mine}>
         <ThrownDiceWrapper>
-          {move.mine === !!mine && <Dice quantity={move.thrownDice} />}
+          {move.isMyTurn === !!mine && <Dice quantity={move.thrownDice} />}
         </ThrownDiceWrapper>
         <Score>{score}</Score>
       </PlayerInfoWrapper>
@@ -37,7 +37,7 @@ export const Board: FC<BoardProps> = ({
       <ColumnsFieldWrapper>
         {columns?.map((column, i) => (
           <Column
-            handleMakeMove={move.mine === !!mine ? handleMakeMove : undefined}
+            handleMakeMove={handleMakeMove}
             key={i}
             numberOfColumn={i}
             column={column}
@@ -46,5 +46,5 @@ export const Board: FC<BoardProps> = ({
         ))}
       </ColumnsFieldWrapper>
     </BoardWrapper>
-  )
-}
+  );
+};

@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components'
+import styled from "styled-components";
 
-export const ColumnWrapper = styled.div<{ mine?: boolean }>`
+export const ColumnWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -8,15 +8,12 @@ export const ColumnWrapper = styled.div<{ mine?: boolean }>`
   border: 5px solid transparent;
   transition: 0.3s;
   border-radius: 8px;
-  ${({ mine }) =>
-    mine &&
-    css`
-      &:hover {
-        border: 5px solid red;
-        background: red;
-      }
-    `}
-`
+
+  &:hover {
+    border: 5px solid red;
+    background: red;
+  }
+`;
 
 export const Cell = styled.div`
   height: 100px;
@@ -27,4 +24,4 @@ export const Cell = styled.div`
   justify-content: center;
   background: #191911;
   border-radius: 12px;
-`
+`;

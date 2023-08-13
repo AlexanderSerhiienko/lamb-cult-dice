@@ -1,11 +1,11 @@
-import { FC } from 'react'
-import { MakeMoveHook } from '../../hooks/MakeMoveHook'
-import { Board } from '../Board'
-import { PlaygroundWrapper } from './style'
+import { FC } from "react";
+import { useMakeMove } from "../../hooks";
+import { Board } from "../Board";
+import { PlaygroundWrapper } from "./style";
 
 export const Playground: FC = () => {
   const [handleMakeMove, myColumns, rivalColumns, myScore, rivalScore, move] =
-    MakeMoveHook()
+    useMakeMove();
 
   return (
     <PlaygroundWrapper>
@@ -23,5 +23,5 @@ export const Playground: FC = () => {
         score={myScore}
       />
     </PlaygroundWrapper>
-  )
-}
+  );
+};

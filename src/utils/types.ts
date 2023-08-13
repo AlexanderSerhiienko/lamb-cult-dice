@@ -1,23 +1,19 @@
-export type ColumnType = (number | null)[]
+export type ColumnType = number[];
 
-export type ColumnsFieldType = ColumnType[]
+export type ColumnsFieldType = ColumnType[];
 
-export type HandleMakeMoveType = (
-  mine: boolean,
-  columnNumber: number,
-  quantity: number
-) => void
+export type HandleMakeMoveType = (mine: boolean, columnNumber: number) => void;
 
 export interface MoveProps {
-  mine: boolean
-  thrownDice: number
+  isMyTurn: boolean;
+  thrownDice: number;
 }
 
-export type MakeMoveHookReturnType = [
+export type MakeMoveReturnType = [
   HandleMakeMoveType,
   ColumnsFieldType,
   ColumnsFieldType,
   number,
   number,
   MoveProps
-]
+];
