@@ -1,46 +1,22 @@
-# Getting Started with Create React App
+# Lamb Cult Dice
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I drew inspiration for this project from playing the game "The Cult of the Lamb." Within this game, there was a subgame that resembled what I have created. Let me describe the game:
 
-## Available Scripts
+Each player has a 3x3 field, making it a two-player game. The objective is to score more points than your opponent. The rules are quite intriguing:
 
-In the project directory, you can run:
+During each turn, you roll a dice numbered from 1 to 6.
+You have three columns, each with a height of three, and you can place your dice at the highest available position in any column with empty cells.
+If your opponent has the same dice value in a corresponding column on their field, your dice destroys theirs. The same applies if your opponent places a dice and you have the same value.
+The first person to fill all nine cells with dice ends the game, and the players must tally the scores to determine the winner.
+Each dice awards between 1 and 6 points, depending on the rolled number. However, it can award even more points. If you have two identical dice, the scoring logic differs:
+For example, if you have 1, 5, and 5 in your left column, the score will be 21. The scoring formula operates as follows: 1 + ((5 + 5) * 2).
+If you have three identical "5" dice, you will receive 45 points, as (5 + 5 + 5) * 3 equals 45 points.
 
-### `npm start`
+How to Run the Game:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To play this game, follow these steps:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone this repository.
+2. Run the command **npm i** to install the necessary dependencies.
+3. After the installation, use the command **npm start** and go to **http://localhost:3000/**.
+4. Enjoy your time playing with my small project! :)
