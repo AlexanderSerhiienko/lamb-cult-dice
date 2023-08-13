@@ -20,3 +20,7 @@ To play this game, follow these steps:
 2. Run the command **npm i** to install the necessary dependencies.
 3. After the installation, use the command **npm start** and go to **http://localhost:3000/**.
 4. Enjoy your time playing with my small project! :)
+
+Something like TODO:
+I really want to make it multiplayer instead of playing on 1 computer, so in future I will work on adding server and websockets :)
+Also, would be nice to add end of the game text, built in rules and other useful stuff!
