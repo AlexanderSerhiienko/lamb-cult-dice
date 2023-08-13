@@ -21,7 +21,7 @@ export const Column: FC<ColumnProps> = ({
       onClick={() => handleMakeMove(!!mine, numberOfColumn)}
     >
       {column.map((cell, i) => (
-        <Cell key={i}>{cell && <Dice quantity={cell} />}</Cell>
+        <Cell key={i}>{!!cell && <Dice quantity={cell} />}</Cell>
       ))}
     </ColumnWrapper>
   );
