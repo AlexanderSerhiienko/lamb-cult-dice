@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react";
-import { HandleMakeMoveType } from "../../utils";
+import { getMostCommonValue, HandleMakeMoveType } from "../../utils";
 import { Dice } from "../Dice";
 import { Cell, ColumnWrapper } from "./styled";
 
@@ -10,22 +10,13 @@ interface ColumnProps {
   handleMakeMove: HandleMakeMoveType;
 }
 
-function getMostCommon(arr: number[]) {
-  return arr
-    .sort(
-      (a, b) =>
-        arr.filter((v) => v === a).length - arr.filter((v) => v === b).length
-    )
-    .pop();
-}
-
 export const Column: FC<ColumnProps> = ({
   column,
   mine,
   numberOfColumn,
   handleMakeMove,
 }) => {
-  const mostCommon = useMemo(() => getMostCommon([...column]), [column]);
+  const mostCommon = useMemo(() => getMostCommonValue([...column]), [column]);
 
   // it checks if we have ore then one dice with the same value to highlight it
   const shouldHighlightMostCommon = useMemo(

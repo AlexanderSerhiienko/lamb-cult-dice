@@ -1,2 +1,3 @@
-export * from './generateRandomDice'
-export * from './types'
+export * from "./generateRandomDice";
+export * from "./getMostCommonValue";
+export * from "./types";
